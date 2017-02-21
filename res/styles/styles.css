@@ -3,10 +3,70 @@
 	font-family: sans-serif;
 }
 
-body
+body {
+	margin:0;
+	padding:0;
+}
+
+header
+{
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:10px;
+	padding-bottom:0px;
+	
+	border-width:5px;
+	border-bottom-style:solid;	
+	border-bottom-color:#333333;
+	border-top-style:solid;	
+	border-top-color:#FFCF44;
+
+	
+}
+
+nav
+{
+	background-color:#333333;
+	margin-top:10px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:20px;
+	padding-right:20px;
+	color:white;
+
+	
+}
+
+footer
+{
+	background-color:#BBBBBB;
+	height:127px;
+	width: 100%;
+	
+        	
+
+}
+
+.content
 {
 	margin-top: 10px;
 	margin-left:20px;
 	margin-right:20px;
 	margin-bottom:10px;
+	height:100%;	
+
 }
+
+.cons-width
+{
+	max-width:1200px;
+	margin:auto;
+}
+
+.fill-remaining
+{
+	overflow:auto;
+}
+
+
+
