@@ -3,70 +3,138 @@
 	font-family: sans-serif;
 }
 
-body {
-	margin:0;
-	padding:0;
-}
+/************************
+ *   HTML Content Tags  *
+ ************************/
+	html, body {
+		margin:0;
+		padding:0;
+		height:100%;
+		/*relative to .css file location*/
+		background: url("../img/background.png") repeat;
+		
+	}
 
-header
-{
-	padding-left:20px;
-	padding-right:20px;
-	padding-top:10px;
-	padding-bottom:0px;
+	header
+	{
+		padding-left:20px;
+		padding-right:20px;
+		padding-top:10px;
+		padding-bottom:0px;
 	
-	border-width:5px;
-	border-bottom-style:solid;	
-	border-bottom-color:#333333;
-	border-top-style:solid;	
-	border-top-color:#FFCF44;
+		border-bottom-width:5px;
+		border-bottom-style:solid;	
+		border-bottom-color:#333333;
+		border-top-width:8px;
+		border-top-style:solid;	
+		border-top-color:#FFCF44;
 
-	
-}
-
-nav
-{
-	background-color:#333333;
-	margin-top:10px;
-	padding-top:10px;
-	padding-bottom:10px;
-	padding-left:20px;
-	padding-right:20px;
-	color:white;
+		background:white;
 
 	
-}
+	}
 
-footer
-{
-	background-color:#BBBBBB;
-	height:127px;
-	width: 100%;
+	nav
+	{
+		background-color:#333333;
+		margin-top:10px;
+		padding-top:10px;
+		padding-bottom:10px;
+		padding-left:20px;
+		padding-right:20px;
+		color:white;
+
 	
-        	
+	}
 
-}
+	footer
+	{
+		width: 100%;
+		background-color:#BBBBBB;
+		/*DO NOT SET HEIGHT HERE, set it below in sticky footer section*/
+	}
 
-.content
-{
-	margin-top: 10px;
-	margin-left:20px;
-	margin-right:20px;
-	margin-bottom:10px;
-	height:100%;	
+	/*Stuff to make the sticky footer work */
+	.site-footer, .page-wrap:after
+	{
+		/*Set footer height*/
+		height:127px;
 
-}
+	}
 
-.cons-width
-{
-	max-width:1200px;
-	margin:auto;
-}
+	.page-wrap {
+		min-height: 100%;
+		/* equal to footer height */
+		margin-bottom: -127px; 
+	}
 
-.fill-remaining
-{
-	overflow:auto;
-}
+	.page-wrap:after {
+		content: "";
+		display: block;
+	}
+
+
+/**************************
+ *   Block Formatting   *
+ **************************/
+
+
+	/*Page-content box (stuff not in header/footer) */
+	.content
+	{
+		margin-top: 10px;
+		margin-left:20px;
+		margin-right:20px;
+		margin-bottom:10px;
+		height:100%;
+
+			
+
+	}
+
+	/*Set the maximum width, center if any more space available*/
+	.cons-width
+	{
+		max-width:1200px;
+		margin:auto;
+	}
+	
+	/*article/section formatting */
+	.grey-box
+	{
+		padding-top:20px;
+		padding-bottom:20px;
+		padding-left:15px;
+		padding-right:15px;
+		background-color:#EBEBEB;
+		
+	}
+
+
+/**************************
+ *   Text Formatting   *
+ **************************/
+
+	h2
+	{
+		background-color:#BFBFBF;
+		color:white;
+		padding:10px;
+	}
+
+
+
+/*IDs*/
+
+	#login-button
+	{
+		margin:20px;
+		
+	}
+
+
+
+
 
 
 
