@@ -38,13 +38,52 @@
 	{
 		background-color:#333333;
 		margin-top:10px;
+		padding-left:10px;
+		
+		color:white;
+		font-weight:bold;
+		text-transform:uppercase;
+		font-size:small;
+		
+		overflow:hidden;
+
+	
+	}	
+	
+	
+	a.nav-link:link, a.nav-link:visited {
+		
+		
+		color:white;
 		padding-top:10px;
 		padding-bottom:10px;
 		padding-left:20px;
 		padding-right:20px;
-		color:white;
+		text-align: center; 
+		text-decoration: none;
+		display: inline-block;
+		cursor: auto;
+	}
 
+	a.nav-link:hover, a.nav-link:active {
+		color: orange;
+	}
 	
+	#nav-login:link, #nav-login:visited {
+		
+		color:white;
+		padding-top:10px;
+		padding-bottom:10px;
+		padding-left:20px;
+		padding-right:20px;
+		text-align: center; 
+		text-decoration: none;
+		display: inline-block;
+		cursor: auto;
+	}
+
+	#nav-login:hover, #nav-login:active {
+		color: orange;
 	}
 
 	footer
@@ -95,7 +134,7 @@
 	/*Set the maximum width, center if any more space available*/
 	.cons-width
 	{
-		max-width:1200px;
+		max-width:1165px;
 		margin:auto;
 	}
 	
@@ -126,11 +165,14 @@
 
 /*IDs*/
 
-	#login-button
+	#view-button
 	{
 		margin:20px;
 		
 	}
+	
+	
+	
 
 
 
