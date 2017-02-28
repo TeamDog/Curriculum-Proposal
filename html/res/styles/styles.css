@@ -146,7 +146,25 @@
 		padding-left:15px;
 		padding-right:15px;
 		background-color:#EBEBEB;
+		margin:0;
+		position:relative;
 		
+	}
+	
+	.proposal-list
+	{
+		
+		
+		width:46%;
+		float:right;
+		
+	}
+	
+	.welcome-box
+	{
+		float:left;
+		width:46%;
+
 	}
 
 
