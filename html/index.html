@@ -3,8 +3,13 @@
 <head>
       	<title>Rowan CPMS</title>
         <link rel="stylesheet" href="./res/styles/styles.css">
+    <link rel="stylesheet" href="./res/lib/w3.css">
+    
+	<script src="./res/lib/angular.min.js"></script>
+	<script type="text/javascript" src="./res/scripts/app.js"></script>
+
 </head>
-<body>
+<body ng-app="testApp" ng-controller="mainController as main">
 	<div class="page-wrap">
 		<header>
 			<div class="cons-width">
@@ -15,10 +20,18 @@
 						<span style="color:orange;">Home</span>
 					</a>
 					
-					<a class="nav-link" href="seeddms">
-						CPMS
+					<a class="nav-link" href="seeddms/out/out.MyDocuments.php">
+						My CPMS
 					</a>
 					
+                        
+                    <a class="nav-link" href="seeddms/out/out.ViewFolder.php">
+						Browse
+					</a>
+                        
+                    <a class="nav-link" href="seeddms/out/out.Search.php">
+						Search
+					</a>
 					<!--<a class="nav-link" href="about.html">
 						About
 					</a>-->
@@ -39,17 +52,52 @@
 		<div class="content">	
 			<div class="cons-width">
 				
-					<h2>Rowan Curricular Proposal Management System</h2>
-					<div class="grey-box welcome-box">
+					<h3 class="grey-header">Rowan Curricular Proposal Management System</h3>
+					<div class="grey-box">
 						Welcome to the new Rowan CPMS!
 						
-						<form action="seeddms" id="view-button">
-							<input type="submit" value="View CPMS" />
-						</form>
+                        <div>
+                            <a href="seeddms" class="w3-button w3-khaki content-button">
+                                My CPMS
+                            </a>
+                            
+                        
+                            
+                            
+                            <a href="seeddms/out/out.ViewFolder.php" class="w3-button w3-khaki content-button">
+							View All Proposals
+                            </a>
+                            
+                            <a href="seeddms/out/out.Search.php" class="w3-button w3-khaki content-button">
+							Search
+						    </a>
+                            
+                            
+                        </div>
 					</div>
+                
+                <!--
 					<div class="grey-box proposal-list">
-					---replace this	with your list----
+					<table style='width:100%'> 
+						<tr>
+						<th>Proposal Name</th>
+						<th>Submission Date</th>
+						<th>Owner</th>
+						<th>Proposal Link</th>
+						</tr>
+						 <tr ng-click="main.printMessage()" ng-repeat="item in main.list">
+								
+        						<td  style="text-align: center;">{{item.name}}</td>
+    							<td  style="text-align: center;">{{item.date}}</td>
+							<td  style="text-align: center;">{{item.owner._fullName}}</td>
+        						<td  style="text-align: center;"><a href={{item.url}}>
+                 						 View Proposal
+         						</a></td>		
+  						</tr>
+					</table>
 					</div>
+
+                -->
 				
 			</div>
 		</div>

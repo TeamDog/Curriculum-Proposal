@@ -1,11 +1,12 @@
-* 
-{
-	font-family: sans-serif;
-}
-
 /************************
  *   HTML Content Tags  *
  ************************/
+    * 
+    {
+        font-family: sans-serif;
+    }
+
+
 	html, body {
 		margin:0;
 		padding:0;
@@ -172,24 +173,29 @@
  *   Text Formatting   *
  **************************/
 
-	h2
+	.grey-header
 	{
 		background-color:#BFBFBF;
 		color:white;
 		padding:10px;
+        font-family:sans-serif;
+        
 	}
 
 
 
 /*IDs*/
 
-	#view-button
-	{
-		margin:20px;
-		
-	}
+
+/**************************
+ *   Button Formatting   *
+ **************************/
 	
-	
+	.content-button
+    {
+        margin:10px;
+        
+    }
 	
 
 
