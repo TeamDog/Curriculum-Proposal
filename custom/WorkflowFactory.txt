@@ -1,0 +1,15 @@
+What I did:
+    Created variables for wfName and initialState
+    Fixed initializing empty array
+    Came up with idea to create unique identifier for wfName (not implemented, requires more stuff from RowanNewProposal)
+    Changed order of function calls (Now that I think about it, createWorkflow should probably not be called from construct)
+    Created variable to hold states from database query
+    Fleshed out loop to fit php syntax (I think)
+    Added custom node conditional in createWorkflow
+    
+What needs to be done:
+    Setup creation of unique identifier for wfName
+    Remove createWorkflow from construct and make it return a workflow
+    Figure out how to pull info from database call to put into SeedDMS_Core_Workflow_State function call
+    Not sure what actions are but whatever dealing with that is unfinished I believe
+    Actually implement database queries (obviously)
