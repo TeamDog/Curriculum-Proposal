@@ -187,6 +187,64 @@ $(document).ready( function() {
 				<input type="text" name="name" id="name" value="<?php print $group ? htmlspecialchars($group->getName()) : '';?>">
 			</div>
 		</div>
+			
+			
+			<!--BEGIN Rowan customization (jtg)-->
+			
+			<?php
+			//Lazy fix to suppress undefined notice, sue me
+			$rowanGrpLevel='';
+			$rowanIsRole='';
+			if (gettype($group) == "object")
+			{ /* {{{ */ 
+			
+				$rowanConn = new mysqli("localhost", "rowancpms", "rowancpms", "rowan_cpms");
+				// Check connection
+				if ($rowanConn->connect_error) {
+					die("Connection failed: " . $rowanConn->connect_error);
+				}
+				
+				$sqlResult = $rowanConn->query(
+					'SELECT group_level, is_role FROM seeddms.tblGroups WHERE id="'.$group->getID().'";');
+				if ($sqlResult->num_rows > 0) {
+					// output data of each row
+					while($row = $sqlResult->fetch_assoc()) {				
+						$rowanGrpLevel = $row["group_level"];
+						$rowanIsRole = $row["is_role"];
+					}
+				} else {
+					die("ROWAN: Invalid group ID");
+				}	
+				
+					} /* }}} */
+				?>
+				
+				<div class="control-group">
+					<label class="control-label">Group Level:</label>
+					<div class="controls">
+						<select name="rowan-group-type" id="rowan-group-type">
+							<option value="NONE" >NONE</option>
+							<option value="DEP" <?php if ($rowanGrpLevel == "DEP") echo "selected"; ?>>Department</option>
+							<option value="COL" <?php if ($rowanGrpLevel == "COL") echo "selected"; ?>>College</option>
+							<option value="UNI" <?php if ($rowanGrpLevel == "UNI") echo "selected"; ?>>University</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label">Process role:</label>
+					<div class="controls">	
+						
+						<input type="checkbox" name="rowan-is-role" id="rowan-is-role" value="is-role" <?php if($rowanIsRole == 1) echo "checked"; ?>>
+					</div>
+				</div>
+			
+			
+			<!--END Rowan customization (jtg)-->
+			
+			
+			
+		</div>
 		<div class="control-group">
 			<label class="control-label"><?php printMLText("comment");?>:</label>
 			<div class="controls">

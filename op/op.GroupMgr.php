@@ -117,6 +117,8 @@ else if ($action == "editgroup") {
 	if ($group->getComment() != $comment)
 		$group->setComment($comment);
 		
+	
+		
 	$session->setSplashMsg(array('type'=>'success', 'msg'=>getMLText('splash_edit_group')));
 
 	add_log_line("?groupid=".$_POST["groupid"]."&action=editgroup");
@@ -228,6 +230,42 @@ else if ($action == "tmanager") {
 	$session->setSplashMsg(array('type'=>'success', 'msg'=>getMLText('splash_toogle_group_manager')));
 
 	add_log_line("?groupid=".$groupid."&userid=".$_POST["userid"]."&action=tmanager");
+}
+
+
+if (($action == "editgroup") || ($action == "addgroup") )
+{
+	//Rowan Custom
+	$grp_level = $_POST["rowan-group-type"];
+	if ($grp_level == "NONE")
+		$grp_level = "NULL";
+	else
+		$grp_level = '"'.$grp_level.'"';
+	if (isset($_POST["rowan-is-role"]))
+		$is_role = "1";
+	else
+		$is_role = "0";
+	
+	
+	$rowanConn = new mysqli("localhost", "rowancpms", "rowancpms", "rowan_cpms");
+	
+	// Check connection
+	if ($rowanConn->connect_error) {
+		UI::exitError(getMLText("admin_tools"),$rowanConn->connect_error);
+	}
+	
+	
+	//UPDATE `seeddms`.`tblGroups` SET `group_level`='UNI', `is_role`='1' WHERE `id`='36';
+	$sqlResult = $rowanConn->query(
+		'UPDATE seeddms.tblGroups SET group_level='.$grp_level.', is_role="'.$is_role.'" WHERE id="'.$groupid.'";'
+		);
+		if(!$sqlResult)
+		{
+			UI::exitError(getMLText("admin_tools"),$rowanConn->error);
+			
+		}
+	
+	//End Rowan custom
 }
 
 header("Location:../out/out.GroupMgr.php?groupid=".$groupid);
