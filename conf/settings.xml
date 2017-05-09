@@ -110,7 +110,7 @@
        - titleDisplayHack: Workaround for page titles that go over more than 2 lines.
        - showMissingTranslations: Check for missing translations and adds forms at the end of the page for submitting new translations.
     -->  
-    <display siteDefaultPage="out/out.RowanBrowse.php" rootFolderID="1" titleDisplayHack="true" showMissingTranslations="false">
+    <display siteDefaultPage="out/out.Search.php?creationdate=true&amp;createstart=2000-01-01&amp;createend=3000-01-01" rootFolderID="1" titleDisplayHack="true" showMissingTranslations="false">
     </display>
     <!-- guestID: ID of guest-user used when logged in as guest (mostly no need to change)
        - adminIP: if enabled admin can login only by specified IP addres, leave empty to avoid the control

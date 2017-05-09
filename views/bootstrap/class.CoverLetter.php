@@ -13,7 +13,7 @@ class SeedDMS_View_CoverLetter extends SeedDMS_Bootstrap_Style {
 
 
 		if($pdfMode) {
-			//Creating the PDF
+			//Creating the PDF instance
 			$pdf = new FPDF('P', 'mm', 'letter');
             $pdf->AddPage();
 		}
@@ -91,9 +91,10 @@ class SeedDMS_View_CoverLetter extends SeedDMS_Bootstrap_Style {
 		3. Loop through the arrays to fine the Process Type
 		*****/
 		$intHolder = 0; //will hold the integer value for the Process Type so we don't echo it out again.
+		$intHolder2 = 0;
 		for($x = 0; $x < count($attArray); $x++) {
 			if($attArray[$x] == "Process Type") {
-				
+				$intHolder = $x;
 				if($pdfMode) {
 					$pdf->SetFont('Arial', 'B', 20);
 					$processType = $attArray[$x] .': '. $valueArray[$x];
@@ -104,7 +105,21 @@ class SeedDMS_View_CoverLetter extends SeedDMS_Bootstrap_Style {
 					echo "<h4> <u>" . $attArray[$x] . " " . $valueArray[$x] .  "</u></h4>";
 					echo "<hr />";
 				}
-			} 
+			} else if($attArray[$x] == "SCC") {
+				$intHolder2 = $x;
+				if($pdfMode) {
+					$scc = $attArray[$x] .': ';
+					$sccNum = $valueArray[$x];
+					$pdf->SetFont('Arial', 'B', 11);
+					$pdf->Cell(60, 5, $scc);
+					$pdf->SetFont('Arial', '', 11);
+					$pdf->Cell(0, 5, $sccNum);
+					$pdf->Ln();
+				} else {
+					echo "<h4> <u>" . $attArray[$x] . " " . $valueArray[$x] .  "</u></h4>";
+					echo "<hr />";
+				}
+			}
 		}
 		
 		
@@ -165,7 +180,7 @@ class SeedDMS_View_CoverLetter extends SeedDMS_Bootstrap_Style {
 			}
 		}
 		for($x = 0; $x < count($attArray); $x++) {
-			if($x != $intHolder) {
+			if($x != $intHolder && $x != $intHolder2) {
  				if($pdfMode) {
 					$pdf->SetFont('Arial', 'B', 11);
 					$pdf->Cell($width, 5, $attArray[$x].': ');

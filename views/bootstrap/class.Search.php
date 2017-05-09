@@ -103,7 +103,7 @@ class SeedDMS_View_Search extends SeedDMS_Bootstrap_Style {
 		$this->htmlStartPage(getMLText("search_results"));
 		$this->globalNavigation();
 		$this->contentStart();
-		$this->pageNavigation(getMLText("search_results"), "");
+		//$this->pageNavigation(getMLText("search_results"), "");
 
 		echo "<div class=\"row-fluid\">\n";
 		echo "<div class=\"span4\">\n";
@@ -464,6 +464,7 @@ class SeedDMS_View_Search extends SeedDMS_Bootstrap_Style {
 			print "<th></th>\n";
 			print "<th>".getMLText("name")."</th>\n";
 			print "<th></th>\n";
+			print "<th> SCC </th>\n";
 			print "<th> Process Type </th>\n";
 			//print "<th>".getMLText("attributes")."</th>\n";
 			print "<th>".getMLText("status")."</th>\n";
@@ -541,6 +542,11 @@ class SeedDMS_View_Search extends SeedDMS_Bootstrap_Style {
 						}
 						print "</ul>\n";
 						print "</td>";
+						
+						//SCC TAG JUST NEED ATTRIBUTE NUMBER AND TO SET IT WHEN CREATING DOCUMENT
+						$sccdef = $dms->getAttributeDefinition(17);
+						$scctag = $document->getAttributeValue($sccdef);
+						print "<td>".$scctag. "</td>";
 						
 						$attributes = array();
 						$attributes = $document->getAttributes();

@@ -179,6 +179,7 @@ function folderSelected(id, name) {
 				print "<th></th>\n";	
 				//print "<th><a href=\"../out/out.ViewFolder.php?folderid=". $folderid .($orderby=="n"?"&orderby=s":"&orderby=n")."\">".getMLText("name")."</a></th>\n";
 				print "<th>Name</th>\n";
+				//print "<th>SCC</th>\n";
 	//			print "<th>".getMLText("owner")."</th>\n";
 				print "<th>".getMLText("status")."</th>\n";
 	//			print "<th>".getMLText("version")."</th>\n";

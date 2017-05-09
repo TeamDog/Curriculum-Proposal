@@ -31,6 +31,7 @@ include("../inc/inc.ClassUI.php");
 
 //change this
 include("../custom/jtg_class.RowanWorkflowCreator.php");
+include("../custom/class.RowanSCCGenerator.php");
 //include("../custom/class.RowanWorkflowFactory.php");
 
 ini_set('display_errors', 1);
@@ -127,6 +128,7 @@ $collegeGroup = $dms->getGroup($college);
 $departmentGroup = $dms->getGroup($department);
 $attributes['11'] = $collegeGroup->getName();
 $attributes['12'] = $departmentGroup->getName();
+$attributes['17'] = 69; //Random setting of SCC attribute. Is set with real number later on in code but needs to be set to work;
 
 if(isset($_POST["attributes_version"]))
 	$attributes_version = $_POST["attributes_version"];
@@ -361,8 +363,8 @@ for ($file_num=0;$file_num<count($_FILES["userfile"]["tmp_name"]);$file_num++){
 	if (is_bool($res) && !$res) {
 		UI::exitError(getMLText("folder_title", array("foldername" => $folder->getName())),getMLText("error_occured"));
 	} else {
-		$document = $res[0];
-
+		$document = $res[0];	
+		
 		/* Set access as specified in settings. */
 		if($settings->_defaultAccessDocs) {
 			if($settings->_defaultAccessDocs > 0 && $settings->_defaultAccessDocs < 4) {
@@ -518,13 +520,22 @@ for ($file_num=0;$file_num<count($_FILES["userfile"]["tmp_name"]);$file_num++){
 				unlink($userfiletmp);
 			}
 		}
+		
+		//SETS SCC CODE
+		$scc = RowanSCCGenerator::createSCC($document->getID(), $collegeGroup->getName(),$dms);
+		$docbutes = $document->getAttributes();
+		foreach($docbutes as $docbute){
+			$attrDef = $docbute->getAttributeDefinition();
+			if($attrDef->getID() == 17){
+				$docbute->setValue($scc);
+			}
+		}
 	}
-	
 	add_log_line("?name=".$name."&folderid=".$folderid);
 }
 
 //jtg mod
 //header("Location:../out/out.ViewFolder.php?folderid=".$folderid."&showtree=".$_POST["showtree"]);
-header("Location:../out/out.RowanBrowse.php");
+header("Location:../out/out.Search.php?creationdate=true&createstart=2000-01-01&createend=3000-01-01");
 
 ?>
